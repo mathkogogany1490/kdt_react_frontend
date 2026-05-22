@@ -18,7 +18,9 @@ function HeaderBar({loginMode, setLoginMode}) {
     return (
         <Container>
 
-            <Logo>
+            <Logo
+                onClick={()=>navigate("/")}
+            >
                 MySystem
             </Logo>
 

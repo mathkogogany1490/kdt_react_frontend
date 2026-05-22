@@ -1,74 +1,63 @@
+// EmployeeTable.jsx
+
 import React from 'react'
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-const EmployeeTable = ({infos}) => {
+const EmployeeTable = ({ emp }) => {
+
   return (
-    <Container>
-        <Title>직원 목록</Title>
-        <Table>
-            <thead>
-                <Tr>
-                    {Object.keys(infos[0]).map(key => (
-                        <Th>{key}</Th>
-                    ))}
-                </Tr>
-            </thead>
-            <tbody>
-                {infos.map(item => (
-                    <Tr>
-                        {Object.values(item).map(value => (
-                            <Td>{value}</Td>
-                        ))}
-                    </Tr>
-                ))}
-            </tbody>
-        </Table>
+    <div>
 
-    </Container>
+      <Title>직원 정보</Title>
+
+      <StyledTable>
+
+        <thead>
+          <tr>
+            {emp && Object.keys(emp).map(key => (
+              <th key={key}>{key}</th>
+            ))}
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            {emp && Object.values(emp).map((value, index) => (
+              <td key={index}>{value}</td>
+            ))}
+          </tr>
+        </tbody>
+
+      </StyledTable>
+
+    </div>
   )
 }
 
-export default EmployeeTable;
-
-const Container = styled.div`
-    width: 100%;
-    background: white;
-    padding: 24px;
-    border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    overflow-x: auto;
-`
+export default EmployeeTable
 
 
 const Title = styled.h2`
-    margin-bottom: 20px;
-    color: #1e293b;
-    font-size: 24px;
+  margin-bottom: 16px;
 `
 
-const Table = styled.table`
-    width: 100%;
-    border-collapse: collapse;
-`
+const StyledTable = styled.table`
+  width: 100%;
 
-const Tr = styled.tr`
-    transition: 0.2s;
-    &:hover{
-        background: #f8fafc;
-    }
-`
+  border-collapse: collapse;
 
-
-const Th = styled.th`
-    background: #3b82f6;
+  th{
+    background: #1e293b;
     color: white;
-    padding: 14px;
-    text-align: left;
-    font-size: 15px;
-`
+  }
 
-const Td = styled.td`
+  th, td{
+    border: 1px solid #cbd5e1;
     padding: 14px;
-    border-bottom: 1px solid #e2e8f0;
-    color: #334155;
+    text-align: center;
+  }
+
+  tbody tr:hover{
+    background: #f8fafc;
+  }
 `
